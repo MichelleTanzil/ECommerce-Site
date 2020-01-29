@@ -1,8 +1,10 @@
-const Item = require("mongoose").model("Item");
+const GameProduct = require("mongoose").model("GameProduct");
+const Cart = require("../models/cart");
 
 module.exports = {
+  //Admin Controls
   getAll: function(req, res) {
-    Item.find()
+    GameProduct.find()
       .then(items => {
         console.log(items);
         res.json({ items: items });
@@ -12,7 +14,7 @@ module.exports = {
 
   getOne: function(req, res) {
     console.log("item id: " + req.params.id);
-    Item.findOne({ _id: req.params.id })
+    GameProduct.findOne({ _id: req.params.id })
       .then(item => {
         console.log("item: ", item);
         res.json(item);
@@ -35,7 +37,7 @@ module.exports = {
   update: function(req, res) {
     console.log("update item id: " + req.params.id);
     req.body.updated_at = Date.now();
-    Item.findByIdAndUpdate({ _id: req.params.id }, req.body, {
+    GameProduct.findByIdAndUpdate({ _id: req.params.id }, req.body, {
       runValidators: true,
       context: "query"
     })
@@ -50,18 +52,34 @@ module.exports = {
   },
   delete: function(req, res) {
     console.log("item id: " + req.params.id);
-    Item.deleteOne({ _id: req.params.id })
+    GameProduct.deleteOne({ _id: req.params.id })
       .then(() => res.json({ message: "Success" }))
       .catch(err => res.json(err));
   },
 
-  updateCart: function (req, res) {
-    console.log("current cart: ", req.session.cart)
-    for (items in req.session.cart) {
-      if (req.body.item.name == req.session.cart.item.name) {
-        req.session.item.quantity = req.body.quantity
-      }
+  //*******************************************************************
+  //Cart
 
+  getCart: function (req, res) {
+    if (!req.session.cart) {
+      console.log("cart is empty")
+      res.json({items: null})
     }
+    let cart = new Cart(req.session.cart)
+    console.log(cart)
+    res.json({ items: cart.generateArray(), totalPrice: cart.totalPrice, totalQty: cart.totalQty})
+  },
+
+  addToCart: function(req, res) {
+    let itemId = req.params.itemId;
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    GameProduct.findById(itemId)
+      .then(item => {
+        cart.add(item, itemId);
+        req.session.cart = cart;
+        console.log(req.session.cart);
+      })
+      .catch(err => res.json(err));
   }
 };
