@@ -25,8 +25,8 @@ export class HttpService {
     return this._http.delete("/hidden-admin-api/items/" + itemToDelete_id);
   }
 
-  addToCart(itemId: string) {
-    return this._http.get("/api/add-to-cart/" + itemId);
+  addToCart(itemId: string, editionId: string) {
+    return this._http.get("/api/add-to-cart/" + itemId + "/" + editionId);
   }
 
   getCart() {

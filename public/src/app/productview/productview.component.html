@@ -1,1 +1,9 @@
-<p>productview works!</p>
+<div *ngIf="oneGame">
+  <h3>{{oneGame.title}}</h3>
+  <img [src]="oneGame.image" [alt]="oneGame.title">
+  <div *ngFor="let edition of oneGame.editions">
+    <h3>Edition Title: {{edition.title}}</h3>
+    <p>Edition Price: ${{edition.price}}</p>
+    <button (click)=addToCart(edition._id)>Add To Cart</button>
+  </div>
+</div>

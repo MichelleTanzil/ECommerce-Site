@@ -22,7 +22,7 @@ module.exports = {
       .catch(err => res.json(err));
   },
   create: function(req, res) {
-    const item = new Item(req.body);
+    const item = new GameProduct(req.body);
     item
       .save()
       .then(item => res.json(item))
@@ -60,25 +60,34 @@ module.exports = {
   //*******************************************************************
   //Cart
 
-  getCart: function (req, res) {
+  getCart: function(req, res) {
     if (!req.session.cart) {
-      console.log("cart is empty")
-      res.json({items: null})
+      console.log("cart is empty");
+      res.json({ items: null });
+    } else {
+      let cart = new Cart(req.session.cart);
+      console.log(cart);
+      res.json({
+        items: cart.generateArray(),
+        totalPrice: cart.totalPrice,
+        totalQty: cart.totalQty
+      });
     }
-    let cart = new Cart(req.session.cart)
-    console.log(cart)
-    res.json({ items: cart.generateArray(), totalPrice: cart.totalPrice, totalQty: cart.totalQty})
   },
 
   addToCart: function(req, res) {
     let itemId = req.params.itemId;
-    let cart = new Cart(req.session.cart ? req.session.cart : {});
+    let editonId = req.params.editionId;
+    let cart = new Cart(
+      req.session.hasOwnProperty("cart") ? req.session["cart"] : {}
+    );
 
     GameProduct.findById(itemId)
       .then(item => {
-        cart.add(item, itemId);
-        req.session.cart = cart;
-        console.log(req.session.cart);
+        cart.add(item, itemId, editonId);
+        req.session["cart"] = cart;
+        console.log("CART", cart);
+        res.json(req.session["cart"]);
       })
       .catch(err => res.json(err));
   }

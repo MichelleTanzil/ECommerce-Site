@@ -3,7 +3,6 @@ const GameProductSchema = new mongoose.Schema(
   {
     title: {
       type: String
-      // required: [true, "A name is required for this game"]
     },
     image: {
       type: String,
@@ -11,7 +10,6 @@ const GameProductSchema = new mongoose.Schema(
     },
     description: {
       type: String
-      // required: [true, "A description is required for this game"]
     },
     editions: [
       {
@@ -28,10 +26,7 @@ const GameProductSchema = new mongoose.Schema(
         console: String
       }
     ],
-    screenshots: [{ images: String }]
-    // rating: {
-    //   type: String
-    // }
+    // screenshots: [{ images: String }]
   },
   { timestamps: true }
 );

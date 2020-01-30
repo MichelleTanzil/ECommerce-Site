@@ -11,9 +11,6 @@ const mongoose = require("mongoose");
 //Database
 require("./server/config/mongoose.js");
 
-//Routes
-require("./server/config/routes.js")(app);
-
 //Session
 app.use(
   session({
@@ -24,6 +21,9 @@ app.use(
     store: new mongoStore({ mongooseConnection: mongoose.connection })
   })
 );
+
+//Routes
+require("./server/config/routes.js")(app);
 
 //Port
 app.listen(4200, () => console.log("listening on port 4200"));

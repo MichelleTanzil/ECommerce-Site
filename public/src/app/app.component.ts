@@ -9,11 +9,11 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "public";
+  title = "SnowMan Games";
   cart: {};
 
   constructor(private _httpService: HttpService, private router: Router) {
-    this.cart = { items: "", totalQty: "", totalPrice:gi ""};
+    this.cart = { items: "", totalQty: "", totalPrice: ""};
   }
 
   ngOninit() {
@@ -23,7 +23,7 @@ export class AppComponent {
   getCart() {
     let observable = this._httpService.getCart();
     observable.subscribe((data: object) => {
-      console.log("Got our data!", data);
+      console.log("Got our cart data!", data);
       this.cart = data;
     });
   }

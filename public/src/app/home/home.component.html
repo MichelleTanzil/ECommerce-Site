@@ -2,7 +2,8 @@
 
 </div>
 
-<div *ngFor let game of games>
-
+<div *ngFor="let game of games">
+  <h3>{{game.title}}</h3>
+  <img [routerLink]="['/game', game._id]" [src]="game.image">
 </div>
 <router-outlet></router-outlet>

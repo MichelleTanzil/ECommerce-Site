@@ -1,4 +1,5 @@
 var itemsController = require("../controllers/gameproducts.js");
+const path = require("path");
 
 module.exports = function(app) {
   // Get all items
@@ -14,7 +15,7 @@ module.exports = function(app) {
   //Get Cart
   app.get("/api/current-cart", itemsController.getCart);
   //Add to cart
-  app.get("/api/add-to-cart/:itemId", itemsController.addToCart);
+  app.get("/api/add-to-cart/:itemId/:editionId", itemsController.addToCart);
   //Default route
   app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"));

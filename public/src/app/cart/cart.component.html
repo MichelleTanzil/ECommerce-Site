@@ -1,1 +1,8 @@
 <p>cart works!</p>
+<div *ngIf="!cart.items">
+  <p>Empty Cart</p>
+</div>
+
+<div *ngIf="cart.items">
+  <p>{{cart.totalPrice}}</p>
+</div>
