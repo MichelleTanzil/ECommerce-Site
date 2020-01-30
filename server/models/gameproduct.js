@@ -26,7 +26,7 @@ const GameProductSchema = new mongoose.Schema(
         console: String
       }
     ],
-    // screenshots: [{ images: String }]
+    screenshots: [{ images: String }]
   },
   { timestamps: true }
 );

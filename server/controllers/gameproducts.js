@@ -77,14 +77,14 @@ module.exports = {
 
   addToCart: function(req, res) {
     let itemId = req.params.itemId;
-    let editonId = req.params.editionId;
+    console.log("req.body: ", req.body)
     let cart = new Cart(
       req.session.hasOwnProperty("cart") ? req.session["cart"] : {}
     );
 
     GameProduct.findById(itemId)
       .then(item => {
-        cart.add(item, itemId, editonId);
+        cart.add(item, itemId, req.body.editionId, req.body.console);
         req.session["cart"] = cart;
         console.log("CART", cart);
         res.json(req.session["cart"]);

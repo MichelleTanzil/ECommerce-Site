@@ -16,9 +16,11 @@ export class ProductviewComponent implements OnInit {
   ) {}
   id: string;
   oneGame: {};
+  addToCartGame: {};
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
+    this.addToCartGame = {console: "", editionId: ""}
     this.oneGame = {};
     this.getGame();
   }
@@ -30,8 +32,9 @@ export class ProductviewComponent implements OnInit {
       this.oneGame = data;
     });
   }
-  addToCart(editionId: string) {
-    let observable = this._httpService.addToCart(this.id, editionId);
+  addToCart() {
+    console.log(this.addToCartGame);
+    let observable = this._httpService.addToCart(this.id, this.addToCartGame);
     observable.subscribe((data: object) => {
       console.log("Added to Cart", data);
     });

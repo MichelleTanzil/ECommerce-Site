@@ -15,7 +15,7 @@ module.exports = function(app) {
   //Get Cart
   app.get("/api/current-cart", itemsController.getCart);
   //Add to cart
-  app.get("/api/add-to-cart/:itemId/:editionId", itemsController.addToCart);
+  app.post("/api/add-to-cart/:itemId", itemsController.addToCart);
   //Default route
   app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"));
