@@ -181,7 +181,7 @@ img {
 }
 
 .games {
-    width: 376px;
+    width: 100%;
     margin-top: 20px;
     border-radius: 5px;
 }
@@ -217,12 +217,3 @@ img {
     border-color: transparent;
 }
 
-/* 
-.scroll {
-    overflow-y: scroll;
-    height: 1200px;
-}
-
-.scroll::-webkit-scrollbar {
-    display: none;
-} */

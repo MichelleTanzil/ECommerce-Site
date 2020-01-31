@@ -1,0 +1,9 @@
+* {
+  font-family: Verdana, sans-serif;
+  color: grey;
+}
+.empty-cart {
+  font-size: 25px;
+  text-align: center;
+  margin: 3% 0;
+}

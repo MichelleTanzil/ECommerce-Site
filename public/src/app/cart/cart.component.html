@@ -1,8 +1,15 @@
-<p>cart works!</p>
 <div *ngIf="!cart.items">
-  <p>Empty Cart</p>
+  <p class="empty-cart">Add items to the cart</p>
 </div>
 
 <div *ngIf="cart.items">
-  <p>{{cart.totalPrice}}</p>
+  <p>Total Price: ${{cart.totalPrice}}</p>
+  <p>Total Quantity: {{cart.totalQty}} games</p>
+  <hr>
+  <div *ngFor="let item of cart.items">
+    <p>{{item.item.title}} </p>
+    <p>Quantity: {{item.qty}}</p>
+    <p>Price: ${{item.price}}</p>
+    <hr>
+  </div>
 </div>

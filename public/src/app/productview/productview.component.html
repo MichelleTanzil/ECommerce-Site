@@ -1,8 +1,16 @@
-<div *ngIf="oneGame">
-  <h3>{{oneGame.title}}</h3>
-  <img class="coverImage" src="../../assets/images/cover_art/{{oneGame.image}}.jpg" [alt]="oneGame.title">
-  <p>Year Released: {{oneGame.releaseDate}}</p>
+<div class="bodyy" *ngIf="oneGame">
+  <div class="container">
+    <div class="half">
+      <img class="coverImage" src="../../assets/images/cover_art/{{oneGame.image}}.jpg" [alt]="oneGame.title">
+    </div>
+    <div class="half">
+      <h3>{{oneGame.title}}</h3>
+      <p>{{oneGame.description}}</p>
+      <p>Year Released: {{oneGame.releaseDate}}</p>
+    </div>
+  </div>
   <form (submit)="addToCart()">
+    <h5>Add To Cart</h5>
     <select name="addToCartGame.editionId" [(ngModel)]="addToCartGame.editionId">
       <option *ngFor="let edition of oneGame.editions" value="{{edition._id}}">
         Edition Title: {{edition.title}} - ${{edition.price}}
