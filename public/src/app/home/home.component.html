@@ -1,9 +1,61 @@
-<div id="carousel">
+<div class="bodyy">
 
-</div>
+  <div id="carousel">
 
-<div *ngFor="let game of games">
-  <h3>{{game.title}}</h3>
-  <img [routerLink]="['/game', game._id]" [src]="game.image">
-</div>
-<router-outlet></router-outlet>
+    <div id="mainBody">
+      <!-- <div style="width: 50px; background-color: blue; height: 50px; margin: auto;"></div> -->
+
+      <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <img class="imgB" src="../../assets/images/0_Carousel/borderlands-3.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <img class="imgB" src="../../assets/images/0_Carousel/witcher-3.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <img class="imgB" src="../../assets/images/0_Carousel/overwatch.jpg" style="width:100%">
+        </div>
+
+
+        <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+        <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+        <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+
+      </div>
+
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+
+
+
+      <div style="text-align: center;">
+        <button class="buttonFilter">Playstation 4</button>
+        <button class="buttonFilter">Xbox One</button>
+        <button class="buttonFilter">Switch</button>
+        <button class="buttonFilter">PC</button>
+      </div>
+
+      <div>
+        <h2 id="headerText">Games</h2>
+      </div>
+
+
+
+      <div class="gameContainer">
+        <div *ngFor="let game of games">
+          <img class="games" [routerLink]="['/game', game._id]" src="../../assets/images/cover_art/{{game.image}}.jpg"
+            alt="{{game.image}}">
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+
+  </div>

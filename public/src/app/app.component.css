@@ -1,18 +1,26 @@
+nav {
+  background-image: url("../assets/images/web_pages/backgroundPattern.png");
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #272e41;
+  /* background-color: #0036cc; */
+  background: rgba(38, 20, 170, 0.28);
+  background-blend-mode: overlay;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-
 li a {
   display: inline-block;
-  padding: 18px;
+  padding-top: 5px;
+  /* padding-bottom: 5px; */
+  padding-left: 18px;
+  padding-right: 18px;
   text-decoration: none;
   color: #a3b2bd;
   font-family: "Montserrat", sans-serif;
@@ -20,8 +28,29 @@ li a {
   font-size: 20px;
 }
 
+.banner {
+  width: 1920px;
+  height: 128.89px;
+  margin: 0 auto;
+  background-color: rgba(50, 50, 50, 1);
+  /* background-image: url("../assets/images/web_pages/backgroundPattern.png"); */
+}
+
 .cart-qty {
   color: #a3b2bd;
   font-family: "Montserrat", sans-serif;
   border-radius: 100%;
+  width: 100px;
+  margin-top: 12.5px;
+  display: inline-block;
+  vertical-align: top;
+  float: right;
+}
+
+.fa {
+  font-size: 50px;
+}
+
+#logoHeader {
+  width: 60%;
 }

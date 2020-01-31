@@ -1,6 +1,6 @@
 <div *ngIf="oneGame">
   <h3>{{oneGame.title}}</h3>
-  <img [src]="oneGame.image" [alt]="oneGame.title">
+  <img class="coverImage" src="../../assets/images/cover_art/{{oneGame.image}}.jpg" [alt]="oneGame.title">
   <p>Year Released: {{oneGame.releaseDate}}</p>
   <form (submit)="addToCart()">
     <select name="addToCartGame.editionId" [(ngModel)]="addToCartGame.editionId">
