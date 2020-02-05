@@ -1,14 +1,5 @@
 .coverImage {
-  width: 70%;
-}
-
-.bodyy {
-    font-family: Verdana, sans-serif;
-    margin: 0;
-    background-image: url("../../assets/images/web_pages/backgroundPattern.png");
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-color: rgb(92, 150, 221);
+  width: 50%;
 }
 
 button{
@@ -32,4 +23,11 @@ button{
 .half h3{
   text-align: center;
   margin-bottom: 20px;
+}
+
+select{
+  width: 150px;
+  margin: 5% 2%;
+  /* background-color: ; */
+  /* border-color: transparent transparent transparent; */
 }

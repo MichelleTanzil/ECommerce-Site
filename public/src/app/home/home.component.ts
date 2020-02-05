@@ -8,13 +8,13 @@ import { Router } from "@angular/router";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  games: []
+  games: [];
 
   slideIndex = 1;
   count = 0;
 
   allGames = [];
-  constructor(private _httpService: HttpService, private router: Router) { }
+  constructor(private _httpService: HttpService, private router: Router) {}
 
   ngOnInit() {
     this.getAllGames();
@@ -28,42 +28,30 @@ export class HomeComponent implements OnInit {
       this.games = data["items"];
     });
   }
-
-
-
-
-
-
-
-
+  //Carousel
   plusSlides(n) {
+    console.log("n value: ", n);
 
-    console.log("n value: ", n)
+    this.slideIndex += n;
 
-
-    this.slideIndex += n
-
-    console.log("slideindex value: ", this.slideIndex)
+    console.log("slideindex value: ", this.slideIndex);
     // if (this.slideIndex < 1) {
     //   this.slideIndex = 3;
     // }
     if (this.slideIndex > 3) {
-      this.slideIndex = 1
+      this.slideIndex = 1;
     }
 
-
-    // n++;
-    // n = n + 1;
-    // console.log("slideindex value: ", this.slideIndex)
-    // var slideIndex = 1;
-    // this.slideIndex = n;
-    // console.log("this.slideindex value: ", this.slideIndex)
     var i;
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { this.slideIndex = n }
-    if (n < 1) { this.slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) { // this is how you tell typescript to ignore/shutup the errors
+    if (n > slides.length) {
+      this.slideIndex = n;
+    }
+    if (n < 1) {
+      this.slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
       // @ts-ignore
       slides[i].style.display = "none";
     }
@@ -76,42 +64,25 @@ export class HomeComponent implements OnInit {
     // showSlides(this.slideIndex += n);
   }
 
-
-
   test() {
     var slideIndex = 1;
     showSlides(slideIndex);
 
-    // function plusSlides(n) {
-    //   var i;
-    //   var slides = document.getElementsByClassName("mySlides");
-    //   var dots = document.getElementsByClassName("dot");
-    //   if (n > slides.length) { slideIndex += n }
-    //   if (n < 1) { slideIndex = slides.length }
-    //   for (i = 0; i < slides.length; i++) { // this is how you tell typescript to ignore/shutup the errors
-    //     // @ts-ignore
-    //     slides[i].style.display = "none";
-    //   }
-    //   for (i = 0; i < dots.length; i++) {
-    //     dots[i].className = dots[i].className.replace(" active", "");
-    //   }
-    //   // @ts-ignore
-    //   slides[slideIndex - 1].style.display = "block";
-    //   dots[slideIndex - 1].className += " active";
-    //   // showSlides(slideIndex += n);
-    // }
-
     function currentSlide(n) {
-      showSlides(slideIndex = n);
+      showSlides((slideIndex = n));
     }
     function showSlides(n) {
-
       var i;
       var slides = document.getElementsByClassName("mySlides");
       var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) { slideIndex = 1 }
-      if (n < 1) { slideIndex = slides.length }
-      for (i = 0; i < slides.length; i++) { // this is how you tell typescript to ignore/shutup the errors
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
+        // this is how you tell typescript to ignore/shutup the errors
         // @ts-ignore
         slides[i].style.display = "none";
       }
@@ -136,7 +107,9 @@ export class HomeComponent implements OnInit {
         dots[i].className = dots[i].className.replace(" active", "");
       }
       slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
       // @ts-ignore
       slides[slideIndex - 1].style.display = "block";
 

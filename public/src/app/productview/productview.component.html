@@ -1,4 +1,4 @@
-<div class="bodyy" *ngIf="oneGame">
+<div *ngIf="oneGame">
   <div class="container">
     <div class="half">
       <img class="coverImage" src="../../assets/images/cover_art/{{oneGame.image}}.jpg" [alt]="oneGame.title">
@@ -6,19 +6,23 @@
     <div class="half">
       <h3>{{oneGame.title}}</h3>
       <p>{{oneGame.description}}</p>
+      <br>
       <p>Year Released: {{oneGame.releaseDate}}</p>
+      <br>
+      <form (submit)="addToCart()">
+        <h5>Add To Cart</h5>
+        <label for="addToCartGame.editionId">Edition: </label>
+        <select name="addToCartGame.editionId" [(ngModel)]="addToCartGame.editionId">
+          <option *ngFor="let edition of oneGame.editions" value="{{edition._id}}">{{edition.title}} - ${{edition.price}}
+          </option>
+        </select>
+        <label for="addToCartGame.console">Console: </label>
+        <select [(ngModel)]="addToCartGame.console" name="addToCartGame.console">
+          <option *ngFor="let console of oneGame.system" value="{{console.console}}">{{console.console}}</option>
+        </select>
+        <button>Add To Cart</button>
+      </form>
     </div>
   </div>
-  <form (submit)="addToCart()">
-    <h5>Add To Cart</h5>
-    <select name="addToCartGame.editionId" [(ngModel)]="addToCartGame.editionId">
-      <option *ngFor="let edition of oneGame.editions" value="{{edition._id}}">
-        Edition Title: {{edition.title}} - ${{edition.price}}
-      </option>
-    </select>
-    <select [(ngModel)]="addToCartGame.console" name="addToCartGame.console">
-      <option *ngFor="let console of oneGame.system" value="{{console.console}}">{{console.console}}</option>
-    </select>
-    <button>Add To Cart</button>
-  </form>
+
 </div>
