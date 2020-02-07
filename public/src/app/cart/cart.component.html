@@ -3,13 +3,32 @@
 </div>
 
 <div *ngIf="cart.items">
-  <p>Total Price: ${{cart.totalPrice}}</p>
-  <p>Total Quantity: {{cart.totalQty}} games</p>
-  <hr>
-  <div *ngFor="let item of cart.items">
-    <p>{{item.item.title}} </p>
-    <p>Quantity: {{item.qty}}</p>
-    <p>Price: ${{item.price}}</p>
-    <hr>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Games</th>
+          <th>Quantity</th>
+          <th>Console</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of cart.items">
+        <tr>
+          <td>{{item.item.title}}</td>
+          <td>{{item.qty}}</td>
+          <td>{{item.console}}</td>
+          <td>${{item.price}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+  <div class="total">
+    <h3>Order Summary: </h3>
+    <p>Price: <strong>${{cart.totalPrice}}</strong></p>
+    <p>Quantity: <strong>{{cart.totalQty}}</strong></p>
+  </div>
+  <button>Checkout</button>
 </div>
