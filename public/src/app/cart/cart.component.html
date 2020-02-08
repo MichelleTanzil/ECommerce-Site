@@ -9,6 +9,7 @@
       <thead>
         <tr>
           <th>Games</th>
+          <th>Edition</th>
           <th>Quantity</th>
           <th>Console</th>
           <th>Price</th>
@@ -16,7 +17,8 @@
       </thead>
       <tbody *ngFor="let item of cart.items">
         <tr>
-          <td>{{item.item.title}} - {{item.edition.title}} Edition</td>
+          <td>{{item.item.title}}</td>
+          <td>{{item.edition.title}}</td>
           <td>{{item.qty}}</td>
           <td>{{item.console}}</td>
           <td>${{item.price}}</td>
