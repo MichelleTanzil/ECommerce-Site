@@ -3,11 +3,18 @@ module.exports = function Cart(oldCart) {
   this.totalQty = oldCart.totalQty || 0;
   this.totalPrice = oldCart.totalPrice || 0;
 
-  this.add = (item, id, editionId, consoleName) => {
+  this.add = (item, edition, editionId, consoleName) => {
     console.log("entered add function")
-    let storedItem = this.items[editionId];
+    let uniqueId = editionId.toString() + consoleName;
+    let storedItem = this.items[uniqueId];
     if (!storedItem) {
-      storedItem = this.items[editionId] = { item: item, qty: 0, edition: editionId, price: 0, console: "" };
+      storedItem = this.items[uniqueId] = {
+        item: item,
+        qty: 0,
+        edition: edition,
+        price: 0,
+        console: ""
+      };
     }
     storedItem.qty++;
     storedItem.price = item.editions.id(editionId).price;

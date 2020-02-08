@@ -6,7 +6,6 @@ module.exports = {
   getAll: function(req, res) {
     GameProduct.find()
       .then(items => {
-        console.log(items);
         res.json({ items: items });
       })
       .catch(err => res.json(err));
@@ -84,7 +83,8 @@ module.exports = {
 
     GameProduct.findById(itemId)
       .then(item => {
-        cart.add(item, itemId, req.body.editionId, req.body.console);
+        let edition = item.editions.id(req.body.editionId)
+        cart.add(item, edition, edition._id, req.body.console);
         req.session["cart"] = cart;
         console.log("CART", cart);
         res.json(req.session["cart"]);

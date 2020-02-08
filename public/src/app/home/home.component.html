@@ -37,10 +37,11 @@
 
 
       <div style="text-align: center;">
-        <button class="buttonFilter">Playstation 4</button>
-        <button class="buttonFilter">Xbox One</button>
-        <button class="buttonFilter">Switch</button>
-        <button class="buttonFilter">PC</button>
+        <button class="buttonFilter" (click)="filterGames('PS4')">Playstation 4</button>
+        <button class="buttonFilter" (click)="filterGames('XBoxOne')">Xbox One</button>
+        <button class="buttonFilter" (click)="filterGames('Nintendo Switch')">Switch</button>
+        <button class="buttonFilter" (click)="filterGames('PC')">PC</button>
+        <button class="buttonFilter" (click)="resetFilter()">All Games</button>
       </div>
 
       <div>

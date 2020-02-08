@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  games: [];
+  games: any[];
 
   slideIndex = 1;
   count = 0;
@@ -25,7 +25,21 @@ export class HomeComponent implements OnInit {
     let observable = this._httpService.getAll();
     observable.subscribe((data: object) => {
       console.log("Got our games data!", data);
-      this.games = data["items"];
+      this.allGames = data["items"];
+      this.games = this.allGames;
+    });
+  }
+  resetFilter() {
+    this.games = this.allGames;
+  }
+  filterGames(gameConsole: string) {
+    this.games = this.allGames.filter((game: any) => {
+      for (let i = 0; i < game.system.length; i++) {
+        if (game.system[i].console === gameConsole) {
+          return true;
+        }
+      }
+      return false;
     });
   }
   //Carousel

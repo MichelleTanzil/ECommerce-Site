@@ -16,7 +16,7 @@
       </thead>
       <tbody *ngFor="let item of cart.items">
         <tr>
-          <td>{{item.item.title}}</td>
+          <td>{{item.item.title}} - {{item.edition.title}} Edition</td>
           <td>{{item.qty}}</td>
           <td>{{item.console}}</td>
           <td>${{item.price}}</td>
@@ -27,7 +27,7 @@
 
   <div class="total">
     <h3>Order Summary: </h3>
-    <p>Price: <strong>${{cart.totalPrice}}</strong></p>
+    <p>Price: <strong>${{cart.totalPrice| number : '1.2-2'}}</strong></p>
     <p>Quantity: <strong>{{cart.totalQty}}</strong></p>
   </div>
   <button>Checkout</button>
