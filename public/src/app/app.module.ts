@@ -8,13 +8,19 @@ import { FormsModule } from "@angular/forms";
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { ProductviewComponent } from './productview/productview.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { UserregisterComponent } from './userregister/userregister.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
     HomeComponent,
-    ProductviewComponent
+    ProductviewComponent,
+    UserloginComponent,
+    UserregisterComponent,
+    UserprofileComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [HttpService],

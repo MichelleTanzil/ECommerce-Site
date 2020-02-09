@@ -3,10 +3,13 @@ const app = express();
 const session = require("express-session");
 const flash = require("express-flash");
 const mongoStore = require("connect-mongo")(session);
-app.use(flash());
+const csrf = require("csurf");
+const csrfProtection = csrf();
+const mongoose = require("mongoose");
+const passport = require("passport");
+
 app.use(express.static(__dirname + "/public/dist/public"));
 app.use(express.json());
-const mongoose = require("mongoose");
 
 //Database
 require("./server/config/mongoose.js");
@@ -16,11 +19,15 @@ app.use(
   session({
     secret: "keyboardkitteh",
     resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    saveUninitialized: false,
+    cookie: { maxAge: 60 * 60 * 1000 },
     store: new mongoStore({ mongooseConnection: mongoose.connection })
   })
 );
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(csrfProtection);
 
 //Routes
 require("./server/config/routes.js")(app);

@@ -7,4 +7,4 @@ mongoose.connect("mongodb://localhost/ecommercev1", {
   useFindAndModify: false
 });
 require("../models/gameproduct")
-// require("../models/shoppingCard")
+require("../models/user")

@@ -18,7 +18,10 @@ export class HttpService {
   }
 
   updateItem(itemToUpdate: any) {
-    return this._http.put("/hidden-admin-api/items/" + itemToUpdate._id, itemToUpdate);
+    return this._http.put(
+      "/hidden-admin-api/items/" + itemToUpdate._id,
+      itemToUpdate
+    );
   }
 
   deleteItem(itemToDelete_id: string) {
@@ -31,5 +34,12 @@ export class HttpService {
 
   getCart() {
     return this._http.get("/api/current-cart");
+  }
+
+  getcsrfToken() {
+    return this._http.get("/api/user/csrftoken");
+  }
+  register(newUser: any) {
+    return this._http.post("/api/user/register", newUser);
   }
 }

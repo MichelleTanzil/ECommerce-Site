@@ -1,0 +1,24 @@
+<h1>Sign Up</h1>
+<form (submit)=submitNewUser() method="POST">
+  <label for="firstName">First Name:</label>
+  <input type="text" name="firstName" [(ngModel)]=newUser.firstName>
+  <p class="text-danger" *ngIf="registerErrors.firstName">{{errors.firstName.message}}</p>
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" name="lastName" [(ngModel)]=newUser.lastName>
+  <p class="text-danger" *ngIf="registerErrors.lastName">{{errors.lastName.message}}</p>
+
+
+  <label for="email">Email Address:</label>
+  <input type="email" name="email" [(ngModel)]=newUser.email>
+  <p class="text-danger" *ngIf="registerErrors.email">{{errors.email.message}}</p><p class="text-danger" *ngIf="mongoerror">{{mongoerror}}</p>
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" [(ngModel)]=newUser.password>
+  <p class="text-danger" *ngIf="registerErrors.password">{{errors.password.message}}</p>
+
+
+  <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+  <button type="submit">Register with SnowMan Games</button>
+</form>
