@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: "", pathMatch: "full", component: HomeComponent },
   { path: "login", component: UserloginComponent },
   { path: "register", component: UserregisterComponent },
-  { path: "account", component: UserprofileComponent },
+  { path: "profile", component: UserprofileComponent },
   { path: "cart", component: CartComponent },
   { path: "game/:id", component: ProductviewComponent },
   { path: "**", component: HomeComponent }

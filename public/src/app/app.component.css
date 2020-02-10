@@ -33,7 +33,7 @@ li a {
   height: 128.89px;
   margin: 0 auto;
   background-color: rgba(50, 50, 50, 1);
-  /* background-image: url("../assets/images/web_pages/backgroundPattern.png"); */
+  background-image: url("../assets/images/web_pages/backgroundPattern.png");
 }
 
 .cart-qty {

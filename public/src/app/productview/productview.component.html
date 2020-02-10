@@ -13,7 +13,8 @@
         <h5>Add To Cart</h5>
         <label for="addToCartGame.editionId">Edition: </label>
         <select name="addToCartGame.editionId" [(ngModel)]="addToCartGame.editionId">
-          <option *ngFor="let edition of oneGame.editions" value="{{edition._id}}">{{edition.title}} - ${{edition.price}}
+          <option *ngFor="let edition of oneGame.editions" value="{{edition._id}}">{{edition.title}} -
+            ${{edition.price}}
           </option>
         </select>
         <label for="addToCartGame.console">Console: </label>

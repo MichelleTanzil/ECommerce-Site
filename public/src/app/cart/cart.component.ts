@@ -10,12 +10,24 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class CartComponent implements OnInit {
   cart: {};
+  csrfToken: {};
+
   constructor(private _httpService: HttpService, private router: Router) {
     this.cart = { items: [], totalQty: "", totalPrice: "" };
   }
 
   ngOnInit() {
     this.getCart();
+    this.csrftoken();
+  }
+  csrftoken() {
+    let observable = this._httpService.getcsrfToken();
+    observable.subscribe((data: object) => {
+      console.log("Got our csrf data!", data);
+      this.csrfToken = data["csrfToken"];
+      //@ts-ignore
+      this.newUser._csrf = this.csrfToken;
+    });
   }
   getCart() {
     let observable = this._httpService.getCart();

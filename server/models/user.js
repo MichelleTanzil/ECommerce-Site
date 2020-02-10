@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt-nodejs')
 var validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
@@ -18,8 +19,6 @@ const UserSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      lowercase: true,
-      unique: [true, "Please use a different email address"],
       required: [true, "An email is required."],
       validate: [validateEmail, "Please use a valid email address"]
     },
@@ -31,5 +30,11 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+UserSchema.methods.encryptPassword = function (password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
+}
 
+UserSchema.methods.validPassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+}
 mongoose.model("User", UserSchema);

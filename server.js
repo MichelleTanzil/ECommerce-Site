@@ -13,6 +13,7 @@ app.use(express.json());
 
 //Database
 require("./server/config/mongoose.js");
+require("./server/config/passport.js");
 
 //Session
 app.use(
@@ -25,9 +26,9 @@ app.use(
   })
 );
 app.use(flash());
+app.use(csrfProtection);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(csrfProtection);
 
 //Routes
 require("./server/config/routes.js")(app);

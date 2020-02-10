@@ -1,6 +1,6 @@
 var itemsController = require("../controllers/gameproducts.js");
 var usersController = require("../controllers/users.js");
-
+const csrf = require("csurf");
 const path = require("path");
 
 module.exports = function(app) {

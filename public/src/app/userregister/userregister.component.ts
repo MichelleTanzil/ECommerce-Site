@@ -15,8 +15,14 @@ export class UserregisterComponent implements OnInit {
   mongoError: string;
 
   constructor(private _httpService: HttpService, private router: Router) {
-    this.newUser = { firstName: "", lastName: "", email: "", password: "" };
     this.registerErrors = { errors: "" };
+    this.newUser = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      _csrf: ""
+    };
   }
 
   ngOnInit() {
@@ -25,18 +31,21 @@ export class UserregisterComponent implements OnInit {
   csrftoken() {
     let observable = this._httpService.getcsrfToken();
     observable.subscribe((data: object) => {
-      console.log("Got our cart data!", data);
+      console.log("Got our csrf data!", data);
       this.csrfToken = data["csrfToken"];
+      //@ts-ignore
+      this.newUser._csrf = this.csrfToken;
     });
   }
   submitNewUser() {
+    console.log("Entered the submitNewUser function outside");
     let obs = this._httpService.register(this.newUser);
     obs.subscribe((data: any) => {
+      console.log("Entered the submitNewUser function inside");
+      console.log("data:", data);
       if (data.hasOwnProperty("errors")) {
-        console.log(data);
+        console.log("data:", data);
         this.registerErrors = data;
-      } else if (data.name == "MongoError") {
-        this.mongoError = "The resturant name must be unique";
       } else {
         this.router.navigate(["/profile"]);
       }
