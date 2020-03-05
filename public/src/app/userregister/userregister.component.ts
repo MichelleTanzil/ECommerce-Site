@@ -50,5 +50,6 @@ export class UserregisterComponent implements OnInit {
         this.router.navigate(["/profile"]);
       }
     });
+    console.log("submitted")
   }
 }

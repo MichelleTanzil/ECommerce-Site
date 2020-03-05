@@ -18,17 +18,8 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.getCart();
-    this.csrftoken();
   }
-  csrftoken() {
-    let observable = this._httpService.getcsrfToken();
-    observable.subscribe((data: object) => {
-      console.log("Got our csrf data!", data);
-      this.csrfToken = data["csrfToken"];
-      //@ts-ignore
-      this.newUser._csrf = this.csrfToken;
-    });
-  }
+
   getCart() {
     let observable = this._httpService.getCart();
     observable.subscribe((data: object) => {

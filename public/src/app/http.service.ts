@@ -40,6 +40,7 @@ export class HttpService {
     return this._http.get("/api/user/csrftoken");
   }
   register(newUser: any) {
+    console.log("Service log")
     return this._http.post("/api/user/register", newUser);
   }
 }

@@ -22,11 +22,8 @@ module.exports = function(app) {
   app.post("/api/add-to-cart/:itemId", itemsController.addToCart);
 
   //User
-  //User Signup CSRF Token
-  app.get("/api/user/csrftoken", usersController.csrftoken);
-
   //User Register
-  app.post("/api/user/register", usersController.register);
+  // app.post("/api/user/register", usersController.register);
 
   //Default route
   app.all("*", (req, res, next) => {
