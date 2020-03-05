@@ -61,7 +61,7 @@ UserSchema.methods.generateJwt = function() {
       exp: parseInt(expiry.getTime() / 1000)
     },
     apiKey
-  ); // DO NOT KEEP YOUR SECRET IN THE CODE!
+  );
 };
 
 mongoose.model("User", UserSchema);

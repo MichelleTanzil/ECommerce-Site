@@ -1,6 +1,16 @@
 var itemsController = require("../controllers/gameproducts.js");
 var usersController = require("../controllers/users.js");
 
+require("dotenv").config();
+const apiKey = process.env.API_KEY;
+
+const jwt = require("express-jwt");
+var auth = jwt({
+  secret: apiKey,
+  userProperty: "payload"
+});
+
+
 const path = require("path");
 
 module.exports = function(app) {
@@ -29,7 +39,7 @@ module.exports = function(app) {
   app.post("/api/user/login", usersController.login);
 
   //User profile
-  app.get("/api/profile/:uid", usersController.userProfile);
+  app.get("/api/profile/", auth, usersController.userProfile);
 
   //Default route
   app.all("*", (req, res, next) => {
