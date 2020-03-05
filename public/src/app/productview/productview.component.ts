@@ -17,24 +17,15 @@ export class ProductviewComponent implements OnInit {
   id: string;
   oneGame: {};
   addToCartGame: {};
-  csrfToken: {};
+
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
     this.addToCartGame = { console: "", editionId: "" };
     this.oneGame = {};
     this.getGame();
-    this.csrftoken();
   }
-  csrftoken() {
-    let observable = this._httpService.getcsrfToken();
-    observable.subscribe((data: object) => {
-      console.log("Got our csrf data!", data);
-      this.csrfToken = data["csrfToken"];
-      //@ts-ignore
-      this.addToCartGame._csrf = this.csrfToken;
-    });
-  }
+
   getGame() {
     let observable = this._httpService.getOne(this.id);
     observable.subscribe((data: object) => {

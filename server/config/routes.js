@@ -1,6 +1,6 @@
 var itemsController = require("../controllers/gameproducts.js");
 var usersController = require("../controllers/users.js");
-const csrf = require("csurf");
+
 const path = require("path");
 
 module.exports = function(app) {
@@ -23,7 +23,13 @@ module.exports = function(app) {
 
   //User
   //User Register
-  // app.post("/api/user/register", usersController.register);
+  app.post("/api/user/register", usersController.register);
+
+  //User Login
+  app.post("/api/user/login", usersController.login);
+
+  //User profile
+  app.get("/api/profile/:uid", usersController.userProfile);
 
   //Default route
   app.all("*", (req, res, next) => {

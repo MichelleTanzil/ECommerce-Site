@@ -10,7 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class CartComponent implements OnInit {
   cart: {};
-  csrfToken: {};
+
 
   constructor(private _httpService: HttpService, private router: Router) {
     this.cart = { items: [], totalQty: "", totalPrice: "" };

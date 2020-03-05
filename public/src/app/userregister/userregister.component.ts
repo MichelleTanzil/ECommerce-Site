@@ -10,7 +10,6 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class UserregisterComponent implements OnInit {
   newUser = {};
-  csrfToken: {};
   registerErrors: {};
   mongoError: string;
 
@@ -21,21 +20,11 @@ export class UserregisterComponent implements OnInit {
       lastName: "",
       email: "",
       password: "",
-      _csrf: ""
     };
   }
 
   ngOnInit() {
-    this.csrftoken();
-  }
-  csrftoken() {
-    let observable = this._httpService.getcsrfToken();
-    observable.subscribe((data: object) => {
-      console.log("Got our csrf data!", data);
-      this.csrfToken = data["csrfToken"];
-      //@ts-ignore
-      this.newUser._csrf = this.csrfToken;
-    });
+
   }
   submitNewUser() {
     console.log("Entered the submitNewUser function outside");
