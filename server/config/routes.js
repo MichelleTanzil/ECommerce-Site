@@ -39,7 +39,7 @@ module.exports = function(app) {
   app.post("/api/user/login", usersController.login);
 
   //User profile
-  app.get("/api/profile/", auth, usersController.userProfile);
+  app.get("/api/user/profile", auth, usersController.userProfile);
 
   //Default route
   app.all("*", (req, res, next) => {
