@@ -6,6 +6,7 @@ import { ProductviewComponent } from "./productview/productview.component";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", component: HomeComponent },
@@ -13,7 +14,11 @@ const routes: Routes = [
   { path: "game/:id", component: ProductviewComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
-  { path: "profile", component: ProfileComponent },
+  {
+    path: "profile",
+    component: ProfileComponent,
+    canActivate: [AuthGuardService]
+  },
   { path: "**", component: HomeComponent }
 ];
 
