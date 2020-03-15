@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { HttpService } from "./http.service";
 import { Router } from "@angular/router";
-import { ActivatedRoute } from "@angular/router";
+import { AuthenticationService } from "./authentication.service";
 
 @Component({
   selector: "app-root",
@@ -12,8 +12,12 @@ export class AppComponent {
   title = "SnowMan Games";
   cart: {};
 
-  constructor(private _httpService: HttpService, private router: Router) {
-    this.cart = { items: "", totalQty: "", totalPrice: ""};
+  constructor(
+    private _httpService: HttpService,
+    private router: Router,
+    public auth: AuthenticationService
+  ) {
+    this.cart = { items: "", totalQty: "", totalPrice: "" };
   }
 
   ngOninit() {

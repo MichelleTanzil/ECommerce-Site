@@ -1,18 +1,13 @@
-<nav>
-
-  <ul>
-    <div style="width: 1920px; margin: 0 auto; ">
-      <li style="display: inline-block;"><a [routerLink]="['/']"><img id="logoHeader"
-            src="../assets/images/companyImg/Logo.png" alt="companyLogo"></a>
-      </li>
-      <li class="cart-qty"><a [routerLink]="['/cart']"><i class="fa fa-shopping-cart"></i></a></li>
-    </div>
-  </ul>
-  <div style="background: rgba(72, 146, 215, .4); height: 9px;"></div>
-  <div style=" height: 9px;"></div>
-
-
-
-
-</nav>
+<header>
+  <nav>
+    <ul>
+      <div id="logo">
+        <li style="display: inline-block;"><a [routerLink]="['/']"><img id="logoHeader"
+              src="../assets/images/companyImg/Logo.png" alt="companyLogo"></a>
+        </li>
+        <li class="cart-qty"><a [routerLink]="['/cart']"><i class="fa fa-shopping-cart"></i></a></li>
+      </div>
+    </ul>
+  </nav>
+</header>
 <router-outlet></router-outlet>
